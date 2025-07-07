@@ -64,10 +64,10 @@ const categories = ["All", "Data Science", "IoT", "Blockchain", "VR/AR", "AI/ML"
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null); // ✅ FIXED HERE
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
+  const filteredProjects = selectedCategory === "All"
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
 
   return (
@@ -76,13 +76,10 @@ export default function ProjectsPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500"></div>
         <div className="absolute inset-0 bg-black/20"></div>
-        
-        {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
         <div className="relative px-4 py-24 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
@@ -129,7 +126,7 @@ export default function ProjectsPage() {
               <div
                 key={i}
                 className="group relative bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/50"
-                onMouseEnter={() => setHoveredProject(null)}
+                onMouseEnter={() => setHoveredProject(i)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 {/* Project Image */}
@@ -147,7 +144,7 @@ export default function ProjectsPage() {
                       {project.category === "Education" && "🎓"}
                     </div>
                   </div>
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-white/90 text-gray-800 text-sm font-medium rounded-full backdrop-blur-sm">
@@ -181,7 +178,6 @@ export default function ProjectsPage() {
                   </p>
 
                   <div className="flex items-center justify-between">
-                    {/* Author Info */}
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
                         {project.author.split(' ').map(n => n[0]).join('')}
@@ -189,7 +185,6 @@ export default function ProjectsPage() {
                       <span className="text-sm font-medium text-gray-700">{project.author}</span>
                     </div>
 
-                    {/* View Button */}
                     <button className="group/btn relative px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-medium overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105">
                       <span className="relative z-10">View Project</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
