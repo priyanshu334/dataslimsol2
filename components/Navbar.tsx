@@ -30,11 +30,11 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const menuItems = [
-    { name: 'Home', href: '#home', icon: '🏠' },
-    { name: 'Blogs', href: '#blogs', icon: '📝' },
-    { name: 'Contact Us', href: '#contact', icon: '📞' },
-    { name: 'Projects', href: '#projects', icon: '🚀' },
-    { name: 'Our Services', href: '#services', icon: '⚡' }
+    { name: 'Home', href: '/', icon: '🏠' },
+    { name: 'Blogs', href: '/blogs', icon: '📝' },
+    { name: 'Contact Us', href: '/contact', icon: '📞' },
+    { name: 'Projects', href: '/projects', icon: '🚀' },
+    { name: 'About Us', href: '/aboutus', icon: '⚡' }
   ];
 
   return (
