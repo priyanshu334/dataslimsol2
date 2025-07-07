@@ -7,7 +7,7 @@ export default function AgencyLandingPage() {
   const [activeProject, setActiveProject] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [activeService, setActiveService] = useState(0);
-  const observerRef = useRef(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
